@@ -23,17 +23,17 @@ function Button({
   className = "",
 }: ButtonProps) {
   const baseClasses =
-    "px-6 py-3 rounded-md font-medium cursor-pointer transition-all duration-200 outline-none focus:ring-3 disabled:opacity-60 disabled:cursor-not-allowed";
+    "px-6 py-3 rounded-xl font-bold cursor-pointer transition-all duration-150 outline-none active:translate-y-[4px] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:translate-y-0";
 
   const variantClasses = {
-    primary: "bg-primary text-white hover:bg-primary/80 focus:ring-primary/30",
+    primary: "bg-primary text-white shadow-[0_6px_0_0_rgb(140,80,200,0.8)] active:shadow-none hover:brightness-110",
     secondary:
-      "bg-secondary text-white dark:text-black hover:bg-secondary/80 focus:ring-secondary/30",
-    success: "bg-success text-white hover:bg-success/80 focus:ring-success/30",
-    warning: "bg-warning text-white hover:bg-warning/80 focus:ring-warning/30",
-    danger: "bg-danger text-white hover:bg-danger/80 focus:ring-danger/30",
-    black: "bg-black text-white hover:bg-black/80 focus:ring-black/30",
-    white: "bg-white text-black hover:bg-white/80 focus:ring-white/30",
+      "bg-secondary text-white dark:text-black shadow-[0_6px_0_0_rgb(50,50,50,0.8)] active:shadow-none hover:brightness-110",
+    success: "bg-success text-white shadow-[0_6px_0_0_rgb(34,197,94,0.6)] active:shadow-none hover:brightness-110",
+    warning: "bg-warning text-white shadow-[0_6px_0_0_rgb(251,146,60,0.6)] active:shadow-none hover:brightness-110",
+    danger: "bg-danger text-white shadow-[0_6px_0_0_rgb(239,68,68,0.6)] active:shadow-none hover:brightness-110",
+    black: "bg-black text-white shadow-[0_6px_0_0_rgb(0,0,0,0.4)] active:shadow-none hover:brightness-110",
+    white: "bg-white text-black shadow-[0_6px_0_0_rgb(0,0,0,0.2)] active:shadow-none hover:brightness-90",
   };
 
   const buttonClass = [baseClasses, variantClasses[variant], className]
