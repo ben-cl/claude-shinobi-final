@@ -3,12 +3,12 @@
 export interface BlogPost {
   id: string
   blogPostSlug: string
-  blogTitle: string
-  createdAt: string
-  createdBy: {
-    name: string
+  blogTitle?: string
+  createdAt?: string
+  createdBy?: {
+    name?: string
   }
-  blogPostContent: {
-    html: string
+  blogPostContent?: {
+    html?: string
   }
 }

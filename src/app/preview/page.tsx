@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/ui/Button/Button";
+import Avatar from "@/components/ui/Avatar/Avatar";
 
 export default function Preview() {
   return (
@@ -97,6 +98,55 @@ export default function Preview() {
           Delete Account
         </Button>
       </div>
+      </section>
+
+      <section style={{ marginTop: '3rem' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Avatar Component</h2>
+        <p style={{ marginBottom: '1.5rem', maxWidth: '500px' }}>
+          Avatar components display user initials with a gradient background. Available in three sizes: small, medium, and large.
+        </p>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Different Sizes</h3>
+        <p style={{ marginBottom: '1rem', maxWidth: '400px' }}>
+          Avatars adapt to different contexts with small (32px), medium (48px), and large (64px) variants.
+        </p>
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+            <Avatar name="Alice" size="sm" />
+            <span style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>Small</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+            <Avatar name="Bob" size="md" />
+            <span style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>Medium</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+            <Avatar name="Charlie" size="lg" />
+            <span style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>Large</span>
+          </div>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Example Users</h3>
+        <p style={{ marginBottom: '1rem', maxWidth: '400px' }}>
+          Avatars automatically extract and display the first initial from any name.
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Avatar name="Sarah Johnson" />
+            <span>Sarah Johnson</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Avatar name="Michael Chen" />
+            <span>Michael Chen</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Avatar name="Emma Davis" />
+            <span>Emma Davis</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Avatar name="David Wilson" />
+            <span>David Wilson</span>
+          </div>
+        </div>
       </section>
 
       <section style={{ marginTop: '3rem' }}>

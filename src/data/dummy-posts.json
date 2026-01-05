@@ -1,0 +1,124 @@
+{
+  "blogPosts": [
+    {
+      "id": "1",
+      "blogPostSlug": "getting-started-with-nextjs",
+      "blogTitle": "Getting Started with Next.js 15",
+      "createdAt": "2024-12-15T10:00:00.000Z",
+      "createdBy": {
+        "name": "Sarah Chen"
+      },
+      "blogPostContent": {
+        "html": "<p>Next.js 15 brings incredible performance improvements and new features that make building React applications easier than ever. In this post, we'll explore the key features and how to get started.</p><h2>What's New in Next.js 15?</h2><p>The latest version includes improved server components, better image optimization, and enhanced routing capabilities. The App Router has been refined to provide even better performance and developer experience.</p><h3>Key Features</h3><ul><li>Enhanced Turbopack support</li><li>Improved caching strategies</li><li>Better TypeScript integration</li><li>Optimized build times</li></ul><p>Let's dive into each of these features and see how they can benefit your projects.</p>"
+      }
+    },
+    {
+      "id": "2",
+      "blogPostSlug": "mastering-react-hooks",
+      "blogTitle": "Mastering React Hooks: A Comprehensive Guide",
+      "createdAt": "2024-12-10T14:30:00.000Z",
+      "createdBy": {
+        "name": "Mike Johnson"
+      },
+      "blogPostContent": {
+        "html": "<p>React Hooks have revolutionized how we write React components. This comprehensive guide will take you from beginner to advanced hook usage.</p><h2>Understanding useState and useEffect</h2><p>These are the most commonly used hooks, but there's more to them than meets the eye. Let's explore advanced patterns and best practices.</p><p>The useState hook allows you to add state to functional components, while useEffect handles side effects. Together, they form the foundation of modern React development.</p><h3>Custom Hooks</h3><p>Creating your own hooks can dramatically improve code reusability. We'll build several custom hooks to demonstrate the power of this pattern.</p>"
+      }
+    },
+    {
+      "id": "3",
+      "blogPostSlug": "tailwind-css-tips-tricks",
+      "blogTitle": "10 Tailwind CSS Tips That Will Speed Up Your Development",
+      "createdAt": "2024-12-05T09:15:00.000Z",
+      "createdBy": {
+        "name": "Emily Rodriguez"
+      },
+      "blogPostContent": {
+        "html": "<p>Tailwind CSS has become the go-to utility-first CSS framework. Here are 10 tips that will make you more productive when using Tailwind.</p><h2>1. Use the @apply Directive Wisely</h2><p>The @apply directive is powerful but should be used sparingly. Learn when to use it and when to stick with utility classes.</p><h2>2. Custom Color Palettes</h2><p>Creating custom color palettes in Tailwind is simple and powerful. Configure your theme to match your brand perfectly.</p><h2>3. Responsive Design Made Easy</h2><p>Tailwind's responsive utilities make it incredibly easy to build responsive layouts. Learn the mobile-first approach.</p>"
+      }
+    },
+    {
+      "id": "4",
+      "blogPostSlug": "typescript-best-practices",
+      "blogTitle": "TypeScript Best Practices for Large Applications",
+      "createdAt": "2024-11-28T16:45:00.000Z",
+      "createdBy": {
+        "name": "David Park"
+      },
+      "blogPostContent": {
+        "html": "<p>TypeScript adds type safety to JavaScript, but using it effectively in large applications requires following best practices. Here's what you need to know.</p><h2>Strict Mode is Your Friend</h2><p>Always enable strict mode in your tsconfig.json. It might seem restrictive at first, but it will save you from countless bugs in production.</p><h3>Interface vs Type</h3><p>Understanding when to use interfaces versus type aliases is crucial. While they're often interchangeable, there are important differences.</p><p>For object shapes that might be extended, prefer interfaces. For unions, intersections, and mapped types, use type aliases.</p>"
+      }
+    },
+    {
+      "id": "5",
+      "blogPostSlug": "building-scalable-apis",
+      "blogTitle": "Building Scalable REST APIs with Node.js",
+      "createdAt": "2024-11-20T11:20:00.000Z",
+      "createdBy": {
+        "name": "Alex Kumar"
+      },
+      "blogPostContent": {
+        "html": "<p>Building APIs that can scale is both an art and a science. This guide covers the essential patterns and practices for creating robust, scalable REST APIs.</p><h2>Architecture Matters</h2><p>Start with a solid architecture. Layer your application properly: routes, controllers, services, and data access layers should be clearly separated.</p><h2>Error Handling</h2><p>Proper error handling is often overlooked but is critical for production applications. Implement centralized error handling middleware.</p><h3>Performance Optimization</h3><p>Learn about caching strategies, database indexing, and query optimization to ensure your API performs well under load.</p>"
+      }
+    },
+    {
+      "id": "6",
+      "blogPostSlug": "graphql-vs-rest",
+      "blogTitle": "GraphQL vs REST: Choosing the Right API Architecture",
+      "createdAt": "2024-11-15T13:00:00.000Z",
+      "createdBy": {
+        "name": "Jessica Lee"
+      },
+      "blogPostContent": {
+        "html": "<p>The debate between GraphQL and REST continues. Let's examine both approaches objectively to help you make the right choice for your project.</p><h2>REST: The Traditional Approach</h2><p>REST has been the standard for years, and for good reason. It's simple, well-understood, and has excellent tooling support.</p><h2>GraphQL: The New Contender</h2><p>GraphQL offers flexibility and efficiency, allowing clients to request exactly the data they need. But it comes with its own complexity.</p><h3>When to Use Each</h3><p>REST excels for simple CRUD operations and public APIs. GraphQL shines when you need flexible queries and have complex data relationships.</p>"
+      }
+    },
+    {
+      "id": "7",
+      "blogPostSlug": "docker-development-workflow",
+      "blogTitle": "Streamlining Your Development Workflow with Docker",
+      "createdAt": "2024-11-08T08:30:00.000Z",
+      "createdBy": {
+        "name": "Chris Anderson"
+      },
+      "blogPostContent": {
+        "html": "<p>Docker has transformed how we develop and deploy applications. Learn how to leverage Docker to create consistent development environments.</p><h2>Docker Basics</h2><p>Understanding containers, images, and volumes is essential. We'll start with the fundamentals and build up to advanced workflows.</p><h2>Docker Compose for Multi-Service Apps</h2><p>Docker Compose makes it easy to define and run multi-container applications. Perfect for microservices or apps with databases.</p><h3>Best Practices</h3><p>Keep your images small, use multi-stage builds, and leverage layer caching to optimize build times.</p>"
+      }
+    },
+    {
+      "id": "8",
+      "blogPostSlug": "web-accessibility-guide",
+      "blogTitle": "Web Accessibility: A Practical Guide for Developers",
+      "createdAt": "2024-11-01T15:10:00.000Z",
+      "createdBy": {
+        "name": "Maria Santos"
+      },
+      "blogPostContent": {
+        "html": "<p>Building accessible websites isn't just good practice—it's essential. This guide will help you create web applications that everyone can use.</p><h2>Understanding WCAG Guidelines</h2><p>The Web Content Accessibility Guidelines (WCAG) provide a framework for making content accessible. Learn the key principles: Perceivable, Operable, Understandable, and Robust.</p><h2>Semantic HTML</h2><p>Using semantic HTML elements is the foundation of accessibility. Learn how to use headings, landmarks, and ARIA attributes correctly.</p><h3>Testing for Accessibility</h3><p>Automated tools can catch many issues, but manual testing is essential. Learn how to use screen readers and keyboard navigation.</p>"
+      }
+    },
+    {
+      "id": "9",
+      "blogPostSlug": "modern-css-features",
+      "blogTitle": "Modern CSS Features You Should Be Using",
+      "createdAt": "2024-10-25T12:40:00.000Z",
+      "createdBy": {
+        "name": "Ryan Mitchell"
+      },
+      "blogPostContent": {
+        "html": "<p>CSS has evolved dramatically in recent years. Discover modern CSS features that will make your styling more powerful and maintainable.</p><h2>CSS Grid and Flexbox</h2><p>These layout systems have revolutionized CSS. Learn when to use each and how to combine them for complex layouts.</p><h2>CSS Custom Properties</h2><p>CSS variables (custom properties) enable dynamic styling and theming. They're incredibly powerful when combined with JavaScript.</p><h3>Container Queries</h3><p>Container queries are finally here! Style components based on their container size rather than viewport size.</p>"
+      }
+    },
+    {
+      "id": "10",
+      "blogPostSlug": "performance-optimization-react",
+      "blogTitle": "React Performance Optimization: From Good to Great",
+      "createdAt": "2024-10-18T10:05:00.000Z",
+      "createdBy": {
+        "name": "Lisa Thompson"
+      },
+      "blogPostContent": {
+        "html": "<p>Even well-written React applications can suffer from performance issues. Learn how to identify and fix performance bottlenecks.</p><h2>Measuring Performance</h2><p>You can't optimize what you don't measure. Use React DevTools Profiler and Chrome DevTools to identify slow components.</p><h2>React.memo and useMemo</h2><p>These tools prevent unnecessary re-renders, but they should be used judiciously. Learn when optimization actually helps.</p><h3>Code Splitting</h3><p>Large bundles slow down initial page load. Implement code splitting with React.lazy and Suspense to load code on demand.</p><h2>Virtual Scrolling</h2><p>Rendering thousands of items? Virtual scrolling renders only visible items, dramatically improving performance for long lists.</p>"
+      }
+    }
+  ]
+}

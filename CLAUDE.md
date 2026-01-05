@@ -72,4 +72,4 @@ src/
 - Dark mode state is managed via CSS classes on root element
 - Component testing follows React Testing Library patterns
 - HTML sanitization is critical for security when displaying CMS content
-- when making new page components, always add a link to that page in the header
+- when making new page components, always add a link to that page in the header. Only do this for page components, not UI or other drop-in components.

@@ -2,30 +2,45 @@ import { GET_BLOG_POSTS } from '@/lib/queries'
 import { BlogPost } from '@/lib/types'
 import Link from 'next/link'
 import BlogSidebar from '@/components/BlogSidebar'
+import Avatar from '@/components/ui/Avatar/Avatar'
+import dummyData from '@/data/dummy-posts.json'
 
 async function getPosts(): Promise<BlogPost[]> {
-  const response = await fetch(process.env.HYGRAPH_ENDPOINT!, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: GET_BLOG_POSTS,
-    }),
-    next: { revalidate: 3600 }
-  })
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch posts: ${response.status}`)
+  // Use local dummy data if no endpoint is configured
+  if (!process.env.HYGRAPH_ENDPOINT) {
+    console.log('HYGRAPH_ENDPOINT not configured, using local dummy data')
+    return dummyData.blogPosts
   }
 
-  const json = await response.json()
-  
-  if (json.errors) {
-    throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`)
-  }
+  try {
+    const response = await fetch(process.env.HYGRAPH_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: GET_BLOG_POSTS,
+      }),
+      next: { revalidate: 3600 }
+    })
 
-  return json.data.blogPosts
+    if (!response.ok) {
+      console.error(`Failed to fetch posts: ${response.status}`)
+      return []
+    }
+
+    const json = await response.json()
+
+    if (json.errors) {
+      console.error(`GraphQL errors: ${JSON.stringify(json.errors)}`)
+      return []
+    }
+
+    return json.data?.blogPosts || []
+  } catch (error) {
+    console.error('Error fetching blog posts:', error)
+    return []
+  }
 }
 
 function getPreviewText(html: string, maxLength: number = 100): string {
@@ -40,26 +55,33 @@ function getPreviewText(html: string, maxLength: number = 100): string {
 }
 
 function BlogPostCard({ post }: { post: BlogPost }) {
+  const previewText = post.blogPostContent?.html
+    ? getPreviewText(post.blogPostContent.html, 300)
+    : 'No preview available';
+
+  const authorName = post.createdBy?.name || 'Anonymous';
+  const postDate = post.createdAt
+    ? new Date(post.createdAt).toLocaleDateString()
+    : 'Date unknown';
+
   return (
     <article className="group mb-4 p-6 bg-surface rounded-lg shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1">
       <Link href={`/blog/${post.blogPostSlug}`} className="block">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <h2 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
-              {post.blogTitle}
+              {post.blogTitle || 'Untitled Post'}
             </h2>
             <p className="text-sm text-muted/70 leading-relaxed mb-4">
-              {getPreviewText(post.blogPostContent.html, 300)}
+              {previewText}
             </p>
             <div className="flex items-center text-sm text-muted">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-semibold text-xs">
-                  {post.createdBy.name.charAt(0).toUpperCase()}
-                </div>
-                <span>By {post.createdBy.name}</span>
+                <Avatar name={authorName} size="sm" />
+                <span>By {authorName}</span>
               </div>
               <span className="mx-3">•</span>
-              <time className="text-muted">{new Date(post.createdAt).toLocaleDateString()}</time>
+              <time className="text-muted">{postDate}</time>
             </div>
           </div>
         </div>

@@ -4,59 +4,83 @@ import { BlogPost } from '@/lib/types'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import styles from './BlogPost.module.css'
+import Avatar from '@/components/ui/Avatar/Avatar'
+import dummyData from '@/data/dummy-posts.json'
 
 async function getSinglePost(slug: string): Promise<BlogPost | null> {
-  const response = await fetch(process.env.HYGRAPH_ENDPOINT!, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: GET_SINGLE_POST,
-      variables: { slug }
-    }),
-    next: { revalidate: 3600 }
-  })
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch post: ${response.status}`)
+  // Use local dummy data if no endpoint is configured
+  if (!process.env.HYGRAPH_ENDPOINT) {
+    console.log('HYGRAPH_ENDPOINT not configured, using local dummy data')
+    const post = dummyData.blogPosts.find(p => p.blogPostSlug === slug)
+    return post || null
   }
 
-  const json = await response.json()
-  
-  if (json.errors) {
-    throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`)
-  }
+  try {
+    const response = await fetch(process.env.HYGRAPH_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: GET_SINGLE_POST,
+        variables: { slug }
+      }),
+      next: { revalidate: 3600 }
+    })
 
-  return json.data.blogPost
+    if (!response.ok) {
+      console.error(`Failed to fetch post: ${response.status}`)
+      return null
+    }
+
+    const json = await response.json()
+
+    if (json.errors) {
+      console.error(`GraphQL errors: ${JSON.stringify(json.errors)}`)
+      return null
+    }
+
+    return json.data?.blogPost || null
+  } catch (error) {
+    console.error('Error fetching blog post:', error)
+    return null
+  }
 }
 
-export default async function BlogPostPage({ 
-  params 
-}: { 
-  params: { slug: string } 
+export default async function BlogPostPage({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getSinglePost(params.slug)
+  const { slug } = await params
+  const post = await getSinglePost(slug)
 
   if (!post) {
     notFound()
   }
+
+  const authorName = post.createdBy?.name || 'Anonymous'
+  const postDate = post.createdAt
+    ? new Date(post.createdAt).toLocaleDateString()
+    : 'Date unknown'
+  const htmlContent = post.blogPostContent?.html || ''
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-8">
       <article>
         <header className="mb-8">
           <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            {post.blogTitle}
+            {post.blogTitle || 'Untitled Post'}
           </h1>
-          <div className="text-lg text-gray-600 dark:text-gray-400">
-            By {post.createdBy.name} • {new Date(post.createdAt).toLocaleDateString()}
+          <div className="flex items-center space-x-3 text-lg text-gray-600 dark:text-gray-400">
+            <Avatar name={authorName} size="sm" />
+            <span>By {authorName} • {postDate}</span>
           </div>
         </header>
-        
-        <div 
+
+        <div
           className={styles.blogContent}
-          dangerouslySetInnerHTML={{ __html: sanitizeHTML(post.blogPostContent.html) }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHTML(htmlContent) }}
         />
       </article>
       
